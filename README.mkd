@@ -1,2 +1,2 @@
-# Solusions to UPenn Haskell Course
+# Solutions to UPenn Haskell Course
 Course URL: http://www.seas.upenn.edu/~cis194/
