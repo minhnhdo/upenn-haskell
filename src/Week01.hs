@@ -26,3 +26,12 @@ sumDigits = sum . concat . map toRevDigits
 
 luhn :: Integer -> Bool
 luhn = (== 0) . (`mod` 10) . sumDigits . doubleEveryOther . toRevDigits
+
+type Peg = String
+type Move = (Peg, Peg)
+
+hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
+hanoi 0 _ _ _ = []
+hanoi n src dst tmp = hanoi (n - 1) src tmp dst ++
+                      [(src, dst)] ++
+                      hanoi (n - 1) tmp dst src

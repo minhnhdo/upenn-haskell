@@ -56,3 +56,7 @@ spec = do
     it "should return whether a credit card number is valid" $ do
       luhn 5594589764218858 `shouldBe` True
       luhn 1234567898765432 `shouldBe` False
+
+  describe "hanoi" $
+    it "should return a correct result for the puzzle" $
+      hanoi 2 "a" "b" "c" `shouldBe` [("a","c"), ("a","b"), ("c","b")]
