@@ -37,3 +37,20 @@ hanoi n src dst tmp
   | otherwise = hanoi (n - 1) src tmp dst ++
                 hanoi 1 src dst tmp ++
                 hanoi (n - 1) tmp dst src
+
+hanoi4 :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+hanoi4 n src dst tmp1 tmp2
+  | n == 0    = []
+  | n == 1    = [(src, dst)]
+  | otherwise = let disksToMove = snd (hanoi4Moves !! fromInteger n)
+                in hanoi4 disksToMove src tmp1 dst tmp2 ++
+                   hanoi (n - disksToMove) src dst tmp2 ++
+                   hanoi4 disksToMove tmp1 dst src tmp2
+  where hanoi3MoveCount :: Integer -> Integer
+        hanoi3MoveCount ndisk = 2^ndisk - 1
+        hanoi4Moves :: [(Integer, Integer)]
+        hanoi4Moves = (0, 0) : (1, 1) : map calculateHanoi4MoveFor [2..]
+        hanoi4MoveCount :: Integer -> Integer -> Integer
+        hanoi4MoveCount ndisk x = 2*(fst $ hanoi4Moves !! fromInteger x) + hanoi3MoveCount (ndisk-x)
+        calculateHanoi4MoveFor :: Integer -> (Integer, Integer)
+        calculateHanoi4MoveFor ndisk = minimum $ map (\x -> (hanoi4MoveCount ndisk x, x)) [1..ndisk-1]

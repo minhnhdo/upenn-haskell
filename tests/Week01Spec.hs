@@ -60,3 +60,7 @@ spec = do
   describe "hanoi" $
     it "should return a correct result for the puzzle" $
       hanoi 2 "a" "b" "c" `shouldBe` [("a","c"), ("a","b"), ("c","b")]
+
+  describe "hanoi4" $
+    it "should return a correct number of moves for a puzzle" $
+      length (hanoi4 15 "a" "b" "c" "d") `shouldBe` 129
