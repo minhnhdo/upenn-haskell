@@ -17,7 +17,7 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 library
-  exposed-modules:     Week01, Week02, Week03
+  exposed-modules:     Week01, Week02, Week03, Week04
   -- other-modules:       
   -- other-extensions:    
   hs-source-dirs:      src
