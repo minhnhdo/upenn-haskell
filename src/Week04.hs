@@ -82,4 +82,4 @@ class Num a => Differentiable a where
 -- Exercise 9 -----------------------------------------
 
 instance (Num a, Enum a) => Differentiable (Poly a) where
-    deriv (P p) = P . tail $ zipWith (*) [0..] p
+    deriv (P p) = P . drop 1 $ zipWith (*) [0..] p
