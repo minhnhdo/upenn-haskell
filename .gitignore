@@ -28,3 +28,6 @@ Session.vim
 .netrwhist
 *~
 
+### Customizations ###
+resources/Week05/victims.json
+resources/Week05/new-transactions.json
