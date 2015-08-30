@@ -27,7 +27,7 @@ executable Week05
                      , text >=1.2 && <1.3
 
 library
-  exposed-modules:     Week01, Week02, Week03, Week04, Week05
+  exposed-modules:     Week01, Week02, Week03, Week04, Week05, Week06
   -- other-modules:       
   -- other-extensions:    
   hs-source-dirs:      src
