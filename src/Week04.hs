@@ -1,8 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
 module Week04 where
 
-import Data.Function (on)
-
 newtype Poly a = P [a]
 
 -- Exercise 1 -----------------------------------------
@@ -13,8 +11,11 @@ x = P [0, 1]
 -- Exercise 2 ----------------------------------------
 
 instance (Num a, Eq a) => Eq (Poly a) where
-  P p1 == P p2 = p1 == p2
- 
+  P p1 == P p2 = pEqual p1 p2
+    where pEqual [] p            = all (== 0) p
+          pEqual p []            = all (== 0) p
+          pEqual (h1:t1) (h2:t2) = (h1 == h2) && pEqual t1 t2
+
 -- Exercise 3 -----------------------------------------
 
 instance (Num a, Eq a, Show a) => Show (Poly a) where
