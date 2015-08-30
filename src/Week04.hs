@@ -33,17 +33,11 @@ instance (Num a, Eq a, Show a) => Show (Poly a) where
 
 -- Exercise 4 -----------------------------------------
 
-padWithZeroToLength :: Num a => Int -> [a] -> [a]
-padWithZeroToLength newLen p = if len >= newLen
-                                 then p
-                                 else take newLen $ p ++ repeat 0
-  where len = length p
-
 plus :: Num a => Poly a -> Poly a -> Poly a
-plus (P p1) (P p2) = P $ zipWith (+) padded1 padded2
-  where biggerLen = (max `on` length) p1 p2
-        padded1 = padWithZeroToLength biggerLen p1
-        padded2 = padWithZeroToLength biggerLen p2
+plus (P p1) (P p2) = P $ plus' p1 p2
+  where plus' (h1:t1) (h2:t2) = (h1+h2) : plus' t1 t2
+        plus' [] l2 = l2
+        plus' l1 [] = l1
 
 -- Exercise 5 -----------------------------------------
 
