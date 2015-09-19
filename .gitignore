@@ -9,7 +9,6 @@ cabal-dev
 *.chs.h
 *.dyn_o
 *.dyn_hi
-.virtualenv
 .hpc
 .hsenv
 .cabal-sandbox/
@@ -17,8 +16,7 @@ cabal.sandbox.config
 *.prof
 *.aux
 *.hp
-*.tix
-
+.stack-work/
 
 ### Vim ###
 [._]*.s[a-w][a-z]
