@@ -26,6 +26,15 @@ executable Week05
                      , containers
                      , text
 
+executable Week07
+  main-is:             Week07/Main.hs
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  build-depends:       base >=4.8 && <5
+                     , MonadRandom
+                     , random
+                     , vector
+
 library
   exposed-modules:     Week01, Week02, Week03, Week04, Week05, Week06, Week07
   -- other-modules:       
@@ -38,8 +47,8 @@ library
                      , containers
                      , text
                      , vector
-                     , random
                      , MonadRandom
+                     , random
 
 test-suite tests
   type:                exitcode-stdio-1.0

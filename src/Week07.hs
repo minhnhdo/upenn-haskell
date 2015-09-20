@@ -86,25 +86,39 @@ qsortR v | V.null v  = return v
 
 -- Selection
 select :: Ord a => Int -> Vector a -> Rnd (Maybe a)
-select = undefined
+select rank v | V.null v  = return Nothing
+              | otherwise = do
+  randomIndex <- getRandomR (0, length v - 1)
+  let (smaller, pivot, larger) = v `partitionAt` randomIndex
+      lengthSmaller = length smaller
+  if rank < lengthSmaller
+    then select rank smaller
+    else if rank > lengthSmaller
+      then select (rank - lengthSmaller - 1) larger
+      else return $ Just pivot
 
 -- Exercise 10 ----------------------------------------
 
 allCards :: Deck
-allCards = undefined
+allCards = [Card label suit | suit <- suits, label <- labels]
 
 newDeck :: Rnd Deck
-newDeck =  undefined
+newDeck = shuffle allCards
 
 -- Exercise 11 ----------------------------------------
 
 nextCard :: Deck -> Maybe (Card, Deck)
-nextCard = undefined
+nextCard deck | V.null deck = Nothing
+              | otherwise   = Just (V.head deck, V.tail deck)
 
 -- Exercise 12 ----------------------------------------
 
 getCards :: Int -> Deck -> Maybe ([Card], Deck)
-getCards = undefined
+getCards n deck | n == 0    = Just ([], deck)
+                | otherwise = do
+  (card, remaining) <- nextCard deck
+  (cards, remainingDeck) <- getCards (n-1) remaining
+  return $ (card : cards, remainingDeck)
 
 -- Exercise 13 ----------------------------------------
 
@@ -149,6 +163,3 @@ repl s@State{..} | money <= 0  = putStrLn "You ran out of money!"
                     | c13 < c23 -> repl $ State (m - amt) d'
                     | otherwise -> war (State m d') amt
               _ -> deckEmpty 
-
-main :: IO ()
-main = evalRandIO newDeck >>= repl . State 100
