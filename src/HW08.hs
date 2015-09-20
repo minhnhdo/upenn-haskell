@@ -108,7 +108,7 @@ de_morgan = Conj dir1 dir2
             Right not_p -> case excluded_middle of
                              Left q  -> absurd $ not_disj (Right q)
                              Right not_q -> Conj not_p not_q
-        dir2 (Conj not_p not_q) = admit
+        dir2 (Conj not_p not_q) p_or_q = not_q $ disjunctive_syllogism p_or_q not_p
 
 -- Natural Numbers ------------------------------------
 
