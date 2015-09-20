@@ -8,8 +8,8 @@ spec :: Spec
 spec = do
   describe "liftM" $
     it "should work" $ do
-      liftM (+1) (Just 5) `shouldBe` Just 6
-      liftM (+1) Nothing  `shouldBe` Nothing
+      HW07.liftM (+1) (Just 5) `shouldBe` Just 6
+      HW07.liftM (+1) Nothing  `shouldBe` Nothing
 
   describe "swapV" $
     it "should work" $ do
