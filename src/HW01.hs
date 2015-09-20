@@ -1,4 +1,4 @@
-module Week01 where
+module HW01 where
 
 lastDigit :: Integer -> Integer
 lastDigit = (`rem` 10)

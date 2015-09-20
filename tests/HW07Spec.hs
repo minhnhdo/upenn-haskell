@@ -1,8 +1,8 @@
-module Week07Spec where
+module HW07Spec where
 
 import Data.Vector as V
 import Test.Hspec
-import Week07
+import HW07
 
 spec :: Spec
 spec = do
@@ -18,8 +18,8 @@ spec = do
 
   describe "mapM" $
     it "should work" $ do
-      Week07.mapM Just [1..10]                 `shouldBe` Just [1..10]
-      Week07.mapM id [Just 1, Just 2, Nothing] `shouldBe` Nothing
+      HW07.mapM Just [1..10]                 `shouldBe` Just [1..10]
+      HW07.mapM id [Just 1, Just 2, Nothing] `shouldBe` Nothing
 
   describe "getElts" $
     it "should work" $ do

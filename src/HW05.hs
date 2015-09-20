@@ -1,7 +1,7 @@
 {-# OPTIONS_GHC -Wall #-}
 {-# LANGUAGE OverloadedStrings, RecordWildCards #-}
 
-module Week05 where
+module HW05 where
 
 import Control.Monad ((>=>))
 import Data.Bits (xor)
@@ -13,7 +13,7 @@ import qualified Data.ByteString.Lazy as BS
 import qualified Data.List as L
 import qualified Data.Map.Strict as Map
 
-import Week05.Parser
+import HW05.Parser
 
 -- Exercise 1 -----------------------------------------
 

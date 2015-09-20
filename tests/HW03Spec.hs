@@ -1,7 +1,7 @@
-module Week03Spec where
+module HW03Spec where
 
 import Test.Hspec
-import Week03
+import HW03
 
 spec :: Spec
 spec = do

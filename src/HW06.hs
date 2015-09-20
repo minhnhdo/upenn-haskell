@@ -1,5 +1,5 @@
 {-# OPTIONS_GHC -Wall #-}
-module Week06 where
+module HW06 where
 
 import Data.List
 import Data.Bits (shiftR, testBit)

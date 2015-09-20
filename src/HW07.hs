@@ -1,9 +1,9 @@
 {-# LANGUAGE MonadComprehensions, RecordWildCards #-}
 {-# OPTIONS_GHC -Wall #-}
-module Week07 where
+module HW07 where
 
 import Prelude hiding (mapM)
-import Week07.Cards
+import HW07.Cards
 
 import Control.Monad hiding (mapM, liftM)
 import Control.Monad.Random

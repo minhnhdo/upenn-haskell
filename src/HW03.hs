@@ -1,4 +1,4 @@
-module Week03 where
+module HW03 where
 
 import Data.Function (on)
 

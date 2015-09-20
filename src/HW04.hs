@@ -1,5 +1,5 @@
 {-# OPTIONS_GHC -Wall #-}
-module Week04 where
+module HW04 where
 
 newtype Poly a = P [a]
 

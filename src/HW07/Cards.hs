@@ -1,9 +1,9 @@
-module Week07.Cards ( Deck(..)
-                    , Card(..)
-                    , Suit(..)
-                    , Label(..)
-                    , suits
-                    , labels) where
+module HW07.Cards ( Deck(..)
+                  , Card(..)
+                  , Suit(..)
+                  , Label(..)
+                  , suits
+                  , labels) where
 
 import Data.Vector (Vector)
 import qualified Data.Vector as V
