@@ -36,7 +36,7 @@ executable HW07
                      , vector
 
 library
-  exposed-modules:     HW01, HW02, HW03, HW04, HW05, HW06, HW07
+  exposed-modules:     HW01, HW02, HW03, HW04, HW05, HW06, HW07, HW08
   other-modules:       HW05.Parser, HW07.Cards
   -- other-extensions:    
   hs-source-dirs:      src
