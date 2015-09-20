@@ -37,25 +37,30 @@ getElts l v = mapM (v !?) l
 type Rnd a = Rand StdGen a
 
 randomElt :: Vector a -> Rnd (Maybe a)
-randomElt = undefined
+randomElt v = getRandomR (0, length v) >>= return . (v !?)
 
 -- Exercise 4 -----------------------------------------
 
 randomVec :: Random a => Int -> Rnd (Vector a)
-randomVec = undefined
+randomVec len = replicateM len getRandom >>= return . V.fromList
 
 randomVecR :: Random a => Int -> (a, a) -> Rnd (Vector a)
-randomVecR = undefined
+randomVecR len (lo, hi) = replicateM len (getRandomR (lo, hi)) >>= return . V.fromList
 
 -- Exercise 5 -----------------------------------------
 
 shuffle :: Vector a -> Rnd (Vector a)
-shuffle = undefined
+shuffle v = go (length v - 1) v
+  where go 0 acc = return acc
+        go n acc = getRandomR (0, n) >>= go (n-1) . swapUnsafe acc n
+        swapUnsafe vec i1 i2 = vec // [(i1, vec ! i2), (i2, vec ! i1)]
 
 -- Exercise 6 -----------------------------------------
 
 partitionAt :: Ord a => Vector a -> Int -> (Vector a, a, Vector a)
-partitionAt = undefined
+partitionAt v idx = ( V.filter (< pivot) vec, pivot, V.filter (>= pivot) vec)
+  where pivot = v ! idx
+        vec = V.take idx v V.++ V.drop (idx+1) v
 
 -- Exercise 7 -----------------------------------------
 
@@ -66,12 +71,16 @@ quicksort (x:xs) = quicksort [ y | y <- xs, y < x ]
                    <> (x : quicksort [ y | y <- xs, y >= x ])
 
 qsort :: Ord a => Vector a -> Vector a
-qsort = undefined
+qsort v | V.null v  = v
+        | otherwise = let (smaller, pivot, larger) = partitionAt v 0
+                      in qsort smaller V.++ cons pivot (qsort larger)
 
 -- Exercise 8 -----------------------------------------
 
 qsortR :: Ord a => Vector a -> Rnd (Vector a)
-qsortR = undefined
+qsortR v | V.null v  = return v
+         | otherwise = getRandomR (0, length v - 1) >>= recurse . partitionAt v
+  where recurse (smaller, pivot, larger) = (V.++) <$> qsortR smaller <*> (cons <$> pure pivot <*> (qsortR larger))
 
 -- Exercise 9 -----------------------------------------
 
